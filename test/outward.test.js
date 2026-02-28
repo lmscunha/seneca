@@ -24,7 +24,7 @@ describe('outward', function () {
       data,
     })
     expect(data.res.message).equal('foo')
-    expect(Error.isError(data.res)).false()
+    expect(data.res instanceof Error).false()
 
     data = { res: err }
     Outward.outward_make_error({
@@ -32,7 +32,7 @@ describe('outward', function () {
       data,
     })
     expect(data.res.message).equal('foo')
-    expect(!Error.isError(data.res)).true()
+    expect(!(data.res instanceof Error)).true()
 
     fin()
   })
